@@ -32,10 +32,20 @@ vertical_alignment = 1
 
 [node name="Lives" type="Label" parent="."]
 layout_mode = 0
-offset_left = 216.0
-offset_top = 88.0
-offset_right = 341.0
-offset_bottom = 135.0
+offset_left = 96.0
+offset_top = 87.0
+offset_right = 221.0
+offset_bottom = 134.0
 text = "LIVES: 3"
+label_settings = SubResource("LabelSettings_oo0fn")
+horizontal_alignment = 1
+
+[node name="Ammo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 87.0
+offset_right = 451.0
+offset_bottom = 134.0
+text = "Ammo: 999"
 label_settings = SubResource("LabelSettings_oo0fn")
 horizontal_alignment = 1

@@ -1,0 +1,86 @@
+[gd_scene load_steps=4 format=3 uid="uid://b7ak6fgl3e88r"]
+
+[ext_resource type="Script" uid="uid://2xxnew7ns141" path="res://scripts/shop.gd" id="1_lx5au"]
+[ext_resource type="Texture2D" uid="uid://b0cffwxsmp5c" path="res://art/laser.png" id="2_xfvoa"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_1l46r"]
+font_size = 67
+
+[node name="Shop" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -6.0
+offset_top = -7.0
+offset_right = 543.0
+offset_bottom = 961.0
+color = Color(0.50350904, 0.003480431, 0.9466917, 0.6156863)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -2.0
+offset_top = 4.0
+offset_right = 38.0
+offset_bottom = 44.0
+script = ExtResource("1_lx5au")
+
+[node name="AmmoText" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 285.0
+offset_right = 293.0
+offset_bottom = 335.0
+theme_override_font_sizes/font_size = 36
+text = "Buy 50 Ammo!"
+
+[node name="BuyAmmo" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 354.0
+offset_right = 297.0
+offset_bottom = 411.0
+theme_override_font_sizes/font_size = 35
+text = "Cost: 100 score"
+
+[node name="ShopReturn" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 770.0
+offset_right = 381.0
+offset_bottom = 908.0
+theme_override_font_sizes/font_size = 67
+text = "Back"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 10.0
+offset_right = 479.0
+offset_bottom = 197.0
+text = "Welcome to
+ the shop!"
+label_settings = SubResource("LabelSettings_1l46r")
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 464.0
+offset_right = 543.0
+offset_bottom = 754.0
+theme_override_font_sizes/font_size = 75
+text = "More Coming
+ Soon!"
+
+[node name="ScoreShopLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 159.0
+offset_top = 197.0
+offset_right = 380.0
+offset_bottom = 260.0
+theme_override_font_sizes/font_size = 45
+text = "Score: 999"
+
+[node name="LaserDisplay" type="Sprite2D" parent="."]
+position = Vector2(401, 355)
+scale = Vector2(0.13048773, 0.14601389)
+texture = ExtResource("2_xfvoa")

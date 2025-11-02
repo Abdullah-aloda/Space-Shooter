@@ -8,6 +8,10 @@ extends Control #Extends control into the script
 		
 @onready var lives = $Lives #Find the Lives label when the scene starts so we can update it
 
+@onready var ammo = $Ammo:
+	set(ammo):
+		ammo.text = "Ammo: " + str(ammo)
+
 #####################################################################################################################
 
 var _lives: int = 3 #User Is started off with 3 lives

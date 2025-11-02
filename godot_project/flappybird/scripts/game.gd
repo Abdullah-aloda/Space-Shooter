@@ -25,6 +25,7 @@ var score := 0: #I introduce score and set it at 0
 var high_score # Created a variable for high score and later on saved it on games files
 var scroll_speed = 67 #How fast the background scrolls I will change this in the future to go faster as player progress and players speed
 var player_dead := false #How could the player start off dead?
+var total_score
 
 #######################################-----FuNcTiOns----#############################################
 
@@ -35,12 +36,31 @@ func _ready(): #We are ready for takeoff!!!
 	else: #Otherwise
 		high_score = 0 #So if we cant find a highscore we set it to 0 
 		save_game() # and save it
+
+	var total_file = FileAccess.open("user://total_score.data", FileAccess.READ) #See if we can open saved data for total score
+	if total_file != null: # If it isnt null
+		total_score = total_file.get_32() # Load the saved total score
+	else: #Otherwise
+		total_score = 0 #So if we cant find a total score we set it to 0
+		save_total_score() # and save it
 	score = 0 #and current score is 0
 	player = get_tree().get_first_node_in_group("player") #We have to find player by group
-	assert(player!=null) #If no player is found I purposely made it crash so I can debug it
+	assert(player != null) #If no player is found I purposely made it crash so I can debug it
 	player.killed.connect(_on_player_killed) # We see if we can see if player died
 	player.laser_shot.connect(_on_player_laser_shot) # See if player shot
 
+
+
+
+
+
+
+
+
+
+func save_total_score(): # Save the total score to file
+	var file = FileAccess.open("user://total_score.data", FileAccess.WRITE)
+	file.store_32(total_score)
 
 func save_game(): #Saving!
 	var save_file = FileAccess.open("user://save.data", FileAccess.WRITE) #Save files in a dedicated folder and write data

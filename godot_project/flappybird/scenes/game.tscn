@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://yik7r83u5ky0"]
+[gd_scene load_steps=14 format=3 uid="uid://yik7r83u5ky0"]
 
 [ext_resource type="Script" uid="uid://c2fsnmmxr20v7" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://dcpj2klltlxf0" path="res://scenes/player.tscn" id="2_yqjtg"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://b8o2dbhqwmw2d" path="res://audio/explode67-[AudioTrimmer.com].mp3" id="6_vtaks"]
 [ext_resource type="AudioStream" uid="uid://dyo24l8x852g3" path="res://audio/live lost-[AudioTrimmer.com].mp3" id="7_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://b0gcx1fik8a3e" path="res://art/67 (1).png" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://drv0g6ht85rr8" path="res://scripts/no_ammo_label.gd" id="11_dinhu"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u5sy4"]
 lifetime_randomness = 1.0
@@ -66,6 +67,11 @@ offset_bottom = 961.0
 
 [node name="GameOverScreen" parent="UILayer" instance=ExtResource("5_p57ef")]
 visible = false
+
+[node name="NoAmmoLabel" type="Label" parent="UILayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("11_dinhu")
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
 wait_time = 2.0

@@ -47,16 +47,7 @@ func _ready(): #We are ready for takeoff!!!
 	player = get_tree().get_first_node_in_group("player") #We have to find player by group
 	assert(player != null) #If no player is found I purposely made it crash so I can debug it
 	player.killed.connect(_on_player_killed) # We see if we can see if player died
-	player.laser_shot.connect(_on_player_laser_shot) # See if player shot
-
-
-
-
-
-
-
-
-
+	player.laser_shot.connect(_on_player_laser_shot) # See if player shota
 
 func save_total_score(): # Save the total score to file
 	var file = FileAccess.open("user://total_score.data", FileAccess.WRITE)
@@ -129,3 +120,10 @@ func _on_player_killed(): # if the main player dies
 	save_game() #save
 	await get_tree().create_timer(0.67).timeout #hehe small timeout
 	gos.visible = true #the screen to show retry score and highscore is now shown
+
+func open_shop():
+	var shop_scene = preload("res://Scenes/shop.tscn").instantiate()
+	shop_scene.game = self
+	shop_scene.player = player
+	get_tree().root.add_child(shop_scene)
+	hide()

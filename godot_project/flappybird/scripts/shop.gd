@@ -1,23 +1,42 @@
 extends Control
 
-@onready var ammo = get_node("/root/Game/UILayer/HUD/Ammo")
+@onready var score_label = $ShopScore
+@onready var ammo_label = $AmmoShopLabel
 
-@onready var score_label = $ScoreShopLabel # Find the Score label when the scene starts so we can change its text later
+var game
+var player
 
 func update_score_display(value):
-	score_label.text = "Score: " + str(value) # The score text will show users current score based off aliens killed
+	score_label.text = "Score: " + str(value)
 
-func _on_BuyAmmo_pressed():
-	var player = get_node("/root/Game/Player") 
-	if player.score >= 100:
-		player.ammo += 50
-		player.score -= 100
-		print("Bought 50 ammo!")
-		ammo.text = "Ammo: " + str(player.ammo)
-		update_score_display(player.score) # Update the score label after purchase 
+func update_ammo_display(value):
+	ammo_label.text = "Ammo: " + str(value)
+
+func _ready():
+	if game:
+		update_score_display(game.score)
 	else:
-		print("Not enough score!")
+		print("Game not passed in")
+
+	if player:
+		update_ammo_display(player.ammo)
+	else:
+		print("Player not passed in")
+		
 
 
-func _on_Back_pressed():
-	get_tree().change_scene("res://GameOverScreen.tscn")
+func _on_buy_ammo_pressed() -> void:
+	if game and player and game.score >= 100:
+		player.ammo += 50
+		game.score -= 100
+		print("Bought 50 ammo!")
+		update_ammo_display(player.ammo)
+		update_score_display(game.score)
+	else:
+		print("Not enough score or missing references!")
+
+
+func _on_shop_return_pressed() -> void:
+	if game:
+		game.show() 
+	queue_free() 

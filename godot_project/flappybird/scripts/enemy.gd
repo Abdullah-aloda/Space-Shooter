@@ -7,7 +7,7 @@ signal hit #emits when enemy has taken damage but not dead
 
 ###########################################################################################################
 
-@onready var hud = $UILayer/HUD # Find and locate HUD to update so we use it
+@onready var hud = get_tree().get_root().get_node("Game/UILayer/HUD")
 @export var speed = 150 # The speed is set to 150 so relatively slow to player which is 300 but changable in the inspector
 @export var hp = 1 # Hp is set to 1 but this is changable in the inspector based of the enemy I will later add more
 @export var points = 10 #Worth 10 points but this is changable in the inspector

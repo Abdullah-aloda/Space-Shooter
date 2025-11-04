@@ -71,7 +71,7 @@ theme_override_font_sizes/font_size = 75
 text = "More Coming
  Soon!"
 
-[node name="ScoreShopLabel" type="Label" parent="Control"]
+[node name="ShopScore" type="Label" parent="Control"]
 layout_mode = 0
 offset_left = 159.0
 offset_top = 197.0
@@ -80,7 +80,19 @@ offset_bottom = 260.0
 theme_override_font_sizes/font_size = 45
 text = "Score: 999"
 
+[node name="AmmoShopLabel" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 429.0
+offset_right = 363.0
+offset_bottom = 478.0
+theme_override_font_sizes/font_size = 25
+text = "Current ammo count: 9999"
+
 [node name="LaserDisplay" type="Sprite2D" parent="."]
 position = Vector2(401, 355)
 scale = Vector2(0.13048773, 0.14601389)
 texture = ExtResource("2_xfvoa")
+
+[connection signal="pressed" from="Control/BuyAmmo" to="Control" method="_on_buy_ammo_pressed"]
+[connection signal="pressed" from="Control/ShopReturn" to="Control" method="_on_shop_return_pressed"]
